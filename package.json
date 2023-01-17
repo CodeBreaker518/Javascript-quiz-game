@@ -1,0 +1,20 @@
+{
+  "name": "javascript-quiz-game",
+  "version": "1.0.0",
+  "description": "A little game quiz for testing skills:)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeBreaker518/Javascript-quiz-game.git"
+  },
+  "keywords": [],
+  "author": "Diego perez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CodeBreaker518/Javascript-quiz-game/issues"
+  },
+  "homepage": "https://github.com/CodeBreaker518/Javascript-quiz-game#readme"
+}
