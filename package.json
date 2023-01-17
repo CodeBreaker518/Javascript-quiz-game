@@ -16,5 +16,6 @@
   "bugs": {
     "url": "https://github.com/CodeBreaker518/Javascript-quiz-game/issues"
   },
-  "homepage": "https://github.com/CodeBreaker518/Javascript-quiz-game#readme"
+  "homepage": "https://github.com/CodeBreaker518/Javascript-quiz-game#readme",
+  "type":"module"
 }
