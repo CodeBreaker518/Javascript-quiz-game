@@ -17,5 +17,11 @@
     "url": "https://github.com/CodeBreaker518/Javascript-quiz-game/issues"
   },
   "homepage": "https://github.com/CodeBreaker518/Javascript-quiz-game#readme",
-  "type":"module"
+  "type": "module",
+  "dependencies": {
+    "animate.css": "^4.1.1"
+  },
+  "devDependencies": {
+    "materialize-css": "^1.0.0-rc.2"
+  }
 }
