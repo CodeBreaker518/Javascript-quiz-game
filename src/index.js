@@ -9,6 +9,7 @@ const category = document.querySelector('#category')
 const question = document.querySelector('#question')
 const btnAnswer = document.querySelector('#btn-container')
 
+// show options on category selection
 let keysCategory = Object.keys(categories)
 let viewOption = `<option selected disabled>Choose your category</option>`
 keysCategory.forEach(value => {
@@ -16,26 +17,26 @@ keysCategory.forEach(value => {
 })
 category.innerHTML = viewOption
 
-
+// creating buttons for answers
 const viewAnswers = () => {
   const answersIDs = ["a1", "a2", "a3", "a4"];
   const shuffledArray = answersIDs.sort((a, b) => 0.5 - Math.random());
-  console.log(shuffledArray)
   let viewAnswer = `<button type="button" class="btn btn-dark" id="${shuffledArray[3]}"></button>`
-  console.log(viewAnswer)
   for (let i = 0; i < 3; i++) {
     viewAnswer +=`<button type="button" class="btn btn-dark" id="${shuffledArray[i]}"></button>`
     btnAnswer.innerHTML = viewAnswer
   }
 }
+//deploying buttons with random ids from a1 to a4
 viewAnswers()
 
+// select answers buttons
 let answer1 = document.querySelector('#a1')
 let answer2 = document.querySelector('#a2')
 let answer3 = document.querySelector('#a3')
 let answer4 = document.querySelector('#a4')
 
-
+// start game
 button.addEventListener('click', () => {
   
   firstSection.style.display='none'
@@ -70,6 +71,13 @@ button.addEventListener('click', () => {
           console.log(i)
           return
         }
+        viewAnswers()
+
+        answer1 = document.querySelector('#a1')
+        answer2 = document.querySelector('#a2')
+        answer3 = document.querySelector('#a3')
+        answer4 = document.querySelector('#a4')
+
         question.innerHTML = result[i].question
         answer1.innerHTML = result[i].incorrectAnswers[0]
         answer2.innerHTML = result[i].incorrectAnswers[1]
@@ -78,7 +86,7 @@ button.addEventListener('click', () => {
         console.log(result[i].correctAnswer)
         i++
 
-      }, 3000);
+      }, 10000);
     }
     showQuestions()
   })
