@@ -8,6 +8,24 @@ const secondSection = document.querySelector('#secondSec')
 const category = document.querySelector('#category')
 const question = document.querySelector('#question')
 const btnAnswer = document.querySelector('#btn-container')
+const gameSection = document.querySelector('#gameSection')
+const mainView = document.querySelector('.main-view')
+const questionView = document.querySelector('.question-view')
+
+if (window.matchMedia("(max-width: 600px)").matches) {
+    mainView.classList.remove('col-6')
+    mainView.classList.add('col-12')
+    mainView.classList.add('p-5')
+    questionView.classList.remove('col-6')
+    questionView.classList.add('col-12')
+    gameSection.classList.add('p-5')
+} else {
+    mainView.classList.remove('col-12')
+    mainView.classList.add('col-6')
+    questionView.classList.remove('col-12')
+    questionView.classList.add('col-6')
+}
+gameSection.style.visibility='hidden'
 
 // show options on category selection
 let keysCategory = Object.keys(categories)
@@ -78,10 +96,9 @@ answer1.addEventListener('click', () => {
 
 })
 
-
-
 // start game
 button.addEventListener('click', () => {
+  gameSection.style.visibility='visible'
   firstSection.style.display='none'
   secondSection.style.display='none'
   const limit = document.querySelector('#limit').value
