@@ -21,9 +21,9 @@ category.innerHTML = viewOption
 const viewAnswers = () => {
   const answersIDs = ["a1", "a2", "a3", "a4"];
   const shuffledArray = answersIDs.sort((a, b) => 0.5 - Math.random());
-  let viewAnswer = `<button type="button" class="btn btn-dark" id="${shuffledArray[3]}"></button>`
+  let viewAnswer = `<button type="button" class="btn btn-secondary m-4" id="${shuffledArray[3]}"></button>`
   for (let i = 0; i < 3; i++) {
-    viewAnswer +=`<button type="button" class="btn btn-dark" id="${shuffledArray[i]}"></button>`
+    viewAnswer +=`<button type="button" class="btn btn-secondary m-4" id="${shuffledArray[i]}"></button>`
     btnAnswer.innerHTML = viewAnswer
   }
 }
@@ -36,9 +36,52 @@ let answer2 = document.querySelector('#a2')
 let answer3 = document.querySelector('#a3')
 let answer4 = document.querySelector('#a4')
 
+// timer for each question
+let timeInterval = 10000
+
+const disableButtons = () => {
+  answer1.setAttribute('disabled','')
+  answer2.setAttribute('disabled','')
+  answer3.setAttribute('disabled','')
+  answer4.setAttribute('disabled','')
+}
+//capture answers & count of answers
+let userAnswer = ''
+let numCorrect = 0
+answer4.addEventListener( 'click', () => {
+  console.log("Correct Answer")
+  numCorrect = numCorrect + 1
+  console.log(numCorrect)
+  answer4.classList.remove('btn-secondary')
+  answer4.classList.add('btn-success')
+  disableButtons()
+})
+answer3.addEventListener('click', () => {
+  console.log("incorrect Answer")
+  answer3.classList.remove('btn-secondary')
+  answer3.classList.add('btn-danger')
+  disableButtons()
+
+})
+answer2.addEventListener('click', () => {
+  console.log("incorrect Answer")
+  answer2.classList.remove('btn-secondary')
+  answer2.classList.add('btn-danger')
+  disableButtons()
+
+})
+answer1.addEventListener('click', () => {
+  console.log("incorrect Answer")
+  answer1.classList.remove('btn-secondary')
+  answer1.classList.add('btn-danger')
+  disableButtons()
+
+})
+
+
+
 // start game
 button.addEventListener('click', () => {
-  
   firstSection.style.display='none'
   secondSection.style.display='none'
   const limit = document.querySelector('#limit').value
@@ -68,7 +111,6 @@ button.addEventListener('click', () => {
       const intervalID = setInterval(() => {
         if (i === result.length){
           clearInterval(intervalID)
-          console.log(i)
           return
         }
         viewAnswers()
@@ -86,8 +128,48 @@ button.addEventListener('click', () => {
         console.log(result[i].correctAnswer)
         i++
 
-      }, 10000);
+        const disableButtons = () => {
+        answer1.setAttribute('disabled','')
+        answer2.setAttribute('disabled','')
+        answer3.setAttribute('disabled','')
+        answer4.setAttribute('disabled','')
+        }
+        //capture answers & count of answers
+        answer4.addEventListener( 'click', () => {
+          console.log("Correct Answer")
+          userAnswer = answer4.value
+          console.log(userAnswer)
+          numCorrect = numCorrect + 1
+          console.log(numCorrect)
+          answer4.classList.remove('btn-secondary')
+          answer4.classList.add('btn-success')
+          disableButtons()
+        })
+        answer3.addEventListener('click', () => {
+          console.log("incorrect Answer")
+          answer3.classList.remove('btn-secondary')
+          answer3.classList.add('btn-danger')
+          disableButtons()
+
+        })
+        answer2.addEventListener('click', () => {
+          console.log("incorrect Answer")
+          answer2.classList.remove('btn-secondary')
+          answer2.classList.add('btn-danger')
+          disableButtons()
+
+        })
+        answer1.addEventListener('click', () => {
+          console.log("incorrect Answer")
+          answer1.classList.remove('btn-secondary')
+          answer1.classList.add('btn-danger')
+          disableButtons()
+          
+        })
+        console.log(`Correct Answers: ${numCorrect} / ${result.length}`)
+      }, timeInterval);
     }
+    
     showQuestions()
   })
 })
