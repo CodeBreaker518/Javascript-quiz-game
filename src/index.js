@@ -152,14 +152,12 @@ button.addEventListener('click', () => {
         answer4.setAttribute('disabled','')
         }
         //capture answers & count of answers
-        
         answer4.addEventListener( 'click', () => {
           console.log("Correct Answer")
           userAnswer = answer4.value
           console.log(userAnswer)
           numCorrect = numCorrect + 1
           console.log(numCorrect)
-
           answer4.classList.remove('btn-secondary')
           answer4.classList.add('btn-success')
           disableButtons()
