@@ -3,7 +3,14 @@
   margin: 0;
   box-sizing: border-box;
 }
-body{
+html, body{
   background-color: #f0cf65;
-  
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.inactive {
+  display: none;
+}
+#score{
+  border-style: inset 5px solid;
 }

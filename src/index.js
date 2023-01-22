@@ -15,17 +15,14 @@ const questionView = document.querySelector('.question-view')
 if (window.matchMedia("(max-width: 600px)").matches) {
     mainView.classList.remove('col-6')
     mainView.classList.add('col-12')
-    mainView.classList.add('p-5')
     questionView.classList.remove('col-6')
     questionView.classList.add('col-12')
-    gameSection.classList.add('p-5')
 } else {
     mainView.classList.remove('col-12')
     mainView.classList.add('col-6')
     questionView.classList.remove('col-12')
     questionView.classList.add('col-6')
 }
-gameSection.style.visibility='hidden'
 
 // show options on category selection
 let keysCategory = Object.keys(categories)
@@ -93,23 +90,27 @@ answer1.addEventListener('click', () => {
   answer1.classList.remove('btn-secondary')
   answer1.classList.add('btn-danger')
   disableButtons()
-
 })
 
 // start game
 button.addEventListener('click', () => {
-  gameSection.style.visibility='visible'
+  gameSection.classList.remove('inactive')
+  gameSection.classList.add('d-flex')
   firstSection.style.display='none'
   secondSection.style.display='none'
+  
+  // get values from settings game
   const limit = document.querySelector('#limit').value
   const difficulty = document.querySelector('#difficulty').value
   const category = document.querySelector('#category').value
   
+  // map info
   let data = {
       "limit": limit,
       "difficulty": difficulty,
       "category": category
   }
+  // get questions
   let questions = getData(data)
 
   questions.then(function(result){
@@ -131,7 +132,6 @@ button.addEventListener('click', () => {
           return
         }
         viewAnswers()
-
         answer1 = document.querySelector('#a1')
         answer2 = document.querySelector('#a2')
         answer3 = document.querySelector('#a3')
@@ -152,12 +152,14 @@ button.addEventListener('click', () => {
         answer4.setAttribute('disabled','')
         }
         //capture answers & count of answers
+        
         answer4.addEventListener( 'click', () => {
           console.log("Correct Answer")
           userAnswer = answer4.value
           console.log(userAnswer)
           numCorrect = numCorrect + 1
           console.log(numCorrect)
+
           answer4.classList.remove('btn-secondary')
           answer4.classList.add('btn-success')
           disableButtons()
@@ -181,15 +183,12 @@ button.addEventListener('click', () => {
           answer1.classList.remove('btn-secondary')
           answer1.classList.add('btn-danger')
           disableButtons()
-          
         })
-        console.log(`Correct Answers: ${numCorrect} / ${result.length}`)
       }, timeInterval);
     }
-    
-    showQuestions()
   })
 })
+console.log('hello')
 
 
 
