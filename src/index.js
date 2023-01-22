@@ -186,9 +186,9 @@ button.addEventListener('click', () => {
         })
       }, timeInterval);
     }
+    showQuestions()
   })
 })
-console.log('hello')
 
 
 
